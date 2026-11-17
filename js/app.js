@@ -1080,12 +1080,60 @@ Tikintiçilər, ev alıcıları və investorlar üçün Xankəndi məlumat platf
 Səhifələr=Sayfalar|Страницы|Pages
 Alətlər=Araçlar|Инструменты|Tools
 Göstərilən məlumatlar nümunə xarakterlidir.=Gösterilen veriler örnek niteliğindedir.|Показанные данные носят примерный характер.|The data shown is for illustration only.
-Bütün məlumatlar nümunə xarakterlidir.=Tüm veriler örnek niteliğindedir.|Все данные примерные.|All data is for illustration only.`;
+Bütün məlumatlar nümunə xarakterlidir.=Tüm veriler örnek niteliğindedir.|Все данные примерные.|All data is for illustration only.
+Analitika=Analitik|Аналитика|Analytics
+Daşınmaz əmlak=Gayrimenkul|Недвижимость|Real estate
+Torpaq sahələri=Arsa alanları|Земельные участки|Land plots
+Qiymət analizi=Fiyat analizi|Анализ цен|Price analysis
+Dashboard=Gösterge paneli|Дашборд|Dashboard
+Axtarış=Arama|Поиск|Search
+Bağla=Kapat|Закрыть|Close
+Bütün növlər=Tüm türler|Все типы|All types
+Torpaq=Arsa|Земля|Land
+Ev / mənzil=Ev / daire|Дом / квартира|House / apartment
+Qiymət aralığı=Fiyat aralığı|Диапазон цен|Price range
+100 000 ₼-dək=100 000 ₼'ye kadar|До 100 000 ₼|Up to 100 000 ₼
+200 000 ₼-dən yuxarı=200 000 ₼ üzeri|Свыше 200 000 ₼|Over 200 000 ₼
+Ərazi, ev və ya torpaq axtarın...=Bölge, ev veya arsa arayın...|Район, дом или участок...|Area, home or land...
+Hesabla →=Hesapla →|Рассчитать →|Calculate →
+Hamısına bax →=Hepsine bak →|Смотреть все →|View all →
+Xəritəyə keç →=Haritaya git →|Перейти к карте →|Go to map →
+Məbləğ=Tutar|Сумма|Amount
+Müddət=Vade|Срок|Term
+İllik faiz dərəcəsi=Yıllık faiz oranı|Годовая процентная ставка|Annual interest rate
+İnteraktiv Xəritə=İnteraktif Harita|Интерактивная карта|Interactive Map
+İnteraktiv xəritə=İnteraktif harita|Интерактивная карта|Interactive map
+Son Elanlar=Son İlanlar|Последние объявления|Latest Listings
+İpoteka Kalkulyatoru=İpotek Hesaplayıcı|Ипотечный калькулятор|Mortgage Calculator
+Qiymət Dəyişiklikləri=Fiyat Değişiklikleri|Изменения цен|Price Changes
+Əhali Bölgüsü=Nüfus Dağılımı|Распределение населения|Population Distribution
+Gələcəyin şəhəri birgə qurulur!=Geleceğin şehri birlikte inşa ediliyor!|Город будущего строится вместе!|The city of the future is being built together!
+Yeni layihələr və inkişaf planları=Yeni projeler ve gelişim planları|Новые проекты и планы развития|New projects and development plans
+SmartXan — Xankəndi şəhərinin inkişafı üçün müasir daşınmaz əmlak və şəhərsalma platforması.=SmartXan — Xankəndi şehrinin gelişimi için modern gayrimenkul ve şehircilik platformu.|SmartXan — современная платформа недвижимости и градостроительства для развития города Ханкенди.|SmartXan — a modern real estate and urban planning platform for the development of Khankendi.
+Xankəndinin=Xankəndi'nin|Строим|Building
+gələcəyini=geleceğini|будущее Ханкенди|Khankendi's future
+birlikdə=birlikte|вместе.|together.
+qururuq.=inşa ediyoruz.|\u200b|\u200b
+Xankəndi mərkəzi=Xankəndi merkezi|Центр Ханкенди|Khankendi center
+Xankəndi=Xankəndi|Ханкенди|Khankendi
+Ağdərə yolu=Ağdere yolu|Дорога на Агдере|Aghdara road
+Şuşa küçəsi=Şuşa caddesi|Улица Шуша|Shusha Street
+Qarabağ=Karabağ|Карабах|Karabakh
+Ağdərə=Ağdere|Агдере|Aghdara
+Torpaq sahəsi=Arsa alanı|Земельный участок|Land plot
+Ev elanı=Ev ilanı|Объявление о доме|Home listing
+Elan təfərrüatı=İlan ayrıntıları|Детали объявления|Listing details
+Hesab=Hesap|Аккаунт|Account
+Tünd rejim=Karanlık mod|Тёмный режим|Dark mode
+XANKƏNDİ ÜÇÜN AĞILLI HƏLLƏR=XANKƏNDİ İÇİN AKILLI ÇÖZÜMLER|УМНЫЕ РЕШЕНИЯ ДЛЯ ХАНКЕНДИ|SMART SOLUTIONS FOR KHANKENDI
+SmartXan loqosu=SmartXan logosu|Логотип SmartXan|SmartXan logo
+© 2026 SmartXan. Göstərilən məlumatlar nümunə xarakterlidir.=© 2026 SmartXan. Gösterilen veriler örnek niteliğindedir.|© 2026 SmartXan. Показанные данные носят примерный характер.|© 2026 SmartXan. The data shown are for illustration only.
+SmartXan – Torpaq, ev və əhali məlumatları=SmartXan – Arsa, ev ve nüfus verileri|SmartXan – Земля, жильё и данные о населении|SmartXan – Land, home and population data`;
 const DICT = {};
 TXT.split("\n").forEach(l => { const i = l.indexOf("="), p = l.slice(i + 1).split("|"); DICT[l.slice(0, i)] = { tr: p[0], ru: p[1], en: p[2] } });
 const RX = new RegExp("(?<![\\p{L}\\p{N}])(?:" + Object.keys(DICT).sort((a, b) => b.length - a.length).map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")(?![\\p{L}\\p{N}])", "gu");
 let LANG = "az";
-const LGS = ["az", "tr", "ru", "en"], O = new WeakMap(), AT = ["placeholder", "aria-label", "title"];
+const LGS = ["az", "tr", "ru", "en"], O = new WeakMap(), AT = ["placeholder", "aria-label", "title", "alt"];
 const T = s => LANG === "az" ? s : String(s).replace(RX, m => (DICT[m] && DICT[m][LANG]) || m);
 function tn(n) {
   const p = n.parentElement;
@@ -1102,7 +1150,7 @@ function tx(r) {
   const w = document.createTreeWalker(r, NodeFilter.SHOW_TEXT);
   let n;
   while ((n = w.nextNode())) tn(n);
-  [r, ...r.querySelectorAll("[placeholder],[aria-label],[title]")].forEach(e => AT.forEach(a => {
+  [r, ...r.querySelectorAll("[placeholder],[aria-label],[title],[alt]")].forEach(e => AT.forEach(a => {
     if (!e.hasAttribute(a) || e.closest("[data-nt]")) return;
     const k = "o" + a.replace("-", "");
     if (!(k in e.dataset)) e.dataset[k] = e.getAttribute(a);

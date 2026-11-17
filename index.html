@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="SmartXan — Xankəndi üzrə torpaq, ev qiymətləri və əhali məlumatları, xəritə, kalkulyatorlar və elanlar bir platformada.">
+<meta name="theme-color" content="#122848">
+<link rel="icon" type="image/png" href="assets/images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SmartXan – Torpaq, ev və əhali məlumatları</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== YUXARI NAVİQASİYA ===== -->
+<nav>
+  <div class="wrap">
+    <div class="logo"><img class="logo-img" src="assets/images/logo.png" alt="SmartXan loqosu"><span class="lt"><b>Smart<i>Xan</i></b><small>XANKƏNDİ ÜÇÜN AĞILLI HƏLLƏR</small></span></div>
+    <span class="nls">
+      <a href="#/" data-p="home">Ana səhifə</a>
+      <a href="#/panel/dash">Analitika</a>
+      <a href="#/panel/map">Xəritə</a>
+      <a href="#/panel/land">Torpaq sahələri</a>
+      <a href="#/panel/home">Daşınmaz əmlak</a>
+      <a href="#/panel/trend">Qiymət analizi</a>
+      <a href="#/panel/calc">Kalkulyator</a>
+      <a href="#/about" data-p="about">Əlaqə</a>
+      <a href="#/admin" data-p="admin" id="admL" hidden>İdarəetmə</a>
+    </span>
+    <!-- JS burada “Qoşul” düyməsini və ya istifadəçi adını göstərir -->
+    <div class="lang" data-nt><button class="btn" id="lgb" aria-haspopup="true" aria-expanded="false" aria-label="Language">🌐 <b id="lgc">AZ</b></button><div class="lgm" id="lgm" hidden><button data-l="az">Azərbaycanca</button><button data-l="tr">Türkçe</button><button data-l="ru">Русский</button><button data-l="en">English</button></div></div>
+    <button class="h2-moon" id="h2dk" aria-label="Tünd rejim">🌙</button><span class="h2-dv"></span>
+    <span id="navA"></span>
+  </div>
+</nav>
+
+<!-- Hərəkətli qiymət lenti (JS doldurur) -->
+<div class="ticker" aria-hidden="true"><div id="tk"></div></div>
+
+<main class="wrap" id="main">
+<div class="pg" data-p="home">
+
+<!-- ===== YENİ ANA SƏHİFƏ (maket dizaynı) ===== -->
+<section class="h2">
+  <img class="h2-art" src="assets/images/hero-xankendi.jpg" alt=""><div class="h2-sh"></div>
+  <div class="h2-in">
+    <span class="h2-badge">📍 Xankəndi</span>
+    <h1>Xankəndinin<br>gələcəyini <em>birlikdə</em> qururuq.</h1>
+    <p>SmartXan — Xankəndi şəhərinin inkişafı üçün müasir daşınmaz əmlak və şəhərsalma platforması.</p>
+    <div class="h2-s"><span>🔍</span><input id="h2q" placeholder="Ərazi, ev və ya torpaq axtarın..." aria-label="Axtarış"><select id="h2t" aria-label="Növ"><option value="home">Bütün növlər</option><option value="land">Torpaq</option><option value="home">Ev / mənzil</option></select><select id="h2p" aria-label="Qiymət"><option>Qiymət aralığı</option><option>100 000 ₼-dək</option><option>100 000 – 200 000 ₼</option><option>200 000 ₼-dən yuxarı</option></select><button class="btn pri" id="h2go">🔍 Axtarış</button></div>
+  </div>
+</section>
+<div class="h2-st" id="h2st"></div>
+
+<div class="h2-r1">
+  <div class="glass h2-c"><div class="h2-h"><h3>🗺️ İnteraktiv Xəritə</h3><a href="#/panel/map">Xəritəyə keç →</a></div>
+    <a class="h2-m" href="#/panel/map"><img src="assets/images/xerite.jpg" alt="İnteraktiv xəritə"></a></div>
+  <div class="glass h2-c"><div class="h2-h"><h3>🏠 Son Elanlar</h3><a href="#/panel/home">Hamısına bax →</a></div><div id="h2ls"></div></div>
+  <div class="h2-calc"><img class="h2-bld" src="assets/images/kalkulyator-bina.png" alt=""><div class="h2-h"><h3>🧮 İpoteka Kalkulyatoru</h3></div>
+    <label>Məbləğ<input id="hcA" type="number" value="100000" min="1000" step="1000"></label>
+    <label>Müddət<select id="hcY"><option>10</option><option>15</option><option selected>20</option><option>25</option><option>30</option></select></label>
+    <label>İllik faiz dərəcəsi<select id="hcR"><option>5</option><option>6</option><option selected>7</option><option>8</option><option>10</option></select></label>
+    <div class="h2-out"><span>🏠</span><div><small>Aylıq ödəniş</small><b id="hcO">0 AZN</b></div></div><a class="btn pri" href="#/panel/calc">Hesabla →</a></div>
+</div>
+
+<div class="h2-r2">
+  <div class="glass h2-c"><div class="h2-h"><h3>📊 Qiymət Dəyişiklikləri</h3><span class="h2-tb" id="h2tb"><button data-y="1">1 il</button><button data-y="3">3 il</button><button data-y="5" class="on">5 il</button></span></div><div id="h2ch"></div></div>
+  <div class="glass h2-c"><div class="h2-h"><h3>👥 Əhali Bölgüsü</h3></div><div class="h2-dn" id="h2dn"></div></div>
+  <a class="h2-cta" href="#/panel/dash"><div><h3>Gələcəyin şəhəri birgə qurulur!</h3><p>Yeni layihələr və inkişaf planları</p></div><img src="assets/images/banner-dabilqe.jpg" alt=""></a>
+</div>
+<div style="display:none" id="oldhome">
+
+  <!-- ===== HERO BÖLMƏSİ ===== -->
+  <div class="hero">
+
+    <!-- Sol sütun: başlıq, plan, reytinq, addımlar -->
+    <div>
+      <h1>Tikmək və ev almaq <mark>indi daha asandır.</mark></h1>
+      <p class="lead">Qeydiyyatdan keç, bölgələr üzrə boş torpağı, ev qiymətlərini və əhali sayını gör, sonra düzgün qərar ver.</p>
+
+      <!-- Emoji kafellər (--r: əyilmə bucağı, --d: animasiya gecikməsi) -->
+      <div class="tiles">
+        <div class="tile" style="--r:-5deg;--d:0s">🏗️</div>
+        <div class="tile" style="--r:4deg;--d:.4s">🧱</div>
+        <div class="tile" style="--r:-3deg;--d:.8s">📐</div>
+        <div class="tile" style="--r:6deg;--d:1.2s">🏠</div>
+      </div>
+
+      <!-- Sahə planı: SVG-ni ikinci skript yaradır, #pi sahə məlumatını göstərir -->
+      <div class="glass plan">
+        <h4>Şimal massivi · sahə planı <small>nümunə</small></h4>
+        <svg id="map" viewBox="0 0 560 246" role="img" aria-label="Torpaq sahələrinin planı"></svg>
+        <div class="lgd">
+          <span><i style="background:var(--gr)"></i>Boş</span>
+          <span><i style="background:var(--y)"></i>Rezerv</span>
+          <span><i style="background:var(--br)"></i>Satılıb</span>
+        </div>
+        <p class="pinfo" id="pi">Sahənin üstünə toxun, ölçü və qiyməti gör.</p>
+      </div>
+
+      <!-- Ən çox baxılan bölgələr (--w: zolağın uzunluğu, %) -->
+      <div class="rank">
+        <h3>Bu həftənin ən çox baxılan bölgələri</h3>
+        <div class="rk"><b>1</b><div><strong>Mərkəz</strong><span>2840 baxış</span></div><u style="--w:100%"></u></div>
+        <div class="rk"><b>2</b><div><strong>Şimal massivi</strong><span>2615 baxış</span></div><u style="--w:92%"></u></div>
+        <div class="rk"><b>3</b><div><strong>Cənub massivi</strong><span>2390 baxış</span></div><u style="--w:84%"></u></div>
+        <div class="rk"><b>4</b><div><strong>Şərq qəsəbəsi</strong><span>1980 baxış</span></div><u style="--w:70%"></u></div>
+      </div>
+
+      <!-- 3 addım -->
+      <div class="step"><i>1</i><div><b>Hesab yarat</b><span>Ad, e-poçt və rolunu seç.</span></div></div>
+      <div class="step"><i>2</i><div><b>Paneli aç</b><span>Bölgə üzrə əhali, torpaq və ev cədvəlləri.</span></div></div>
+      <div class="step"><i>3</i><div><b>Müqayisə et və qərar ver</b><span>Ən sərfəli sahəni və ya evi tap.</span></div></div>
+    </div>
+
+    <!-- Sağ sütun: qeydiyyat/giriş kartı (məzmununu JS-dəki card() funksiyası yazır) -->
+    <div class="glass card" id="cta"><h2>Qərarı məlumatla ver</h2><p class="sub">Pulsuz hesab yarat, bölgələr üzrə əhali, torpaq və ev qiymətlərini bir paneldə gör.</p><ul class="ck"><li>5 bölgə üzrə interaktiv xəritə</li><li>İpoteka və tikinti xərci kalkulyatoru</li><li>Elan yerləşdirmə və evləri müqayisə</li></ul><div class="row2" id="ctaB"></div></div>
+  </div>
+
+  <!-- 4 statistika qutusu (JS doldurur) -->
+  <div class="stats" id="stats"></div>
+</div></div>
+
+  <!-- ===== ŞƏHƏR PANELİ =====
+       "locked" sinfi varkən məzmun bulanıq olur və .gate pərdəsi görünür -->
+  <section class="panel locked pg" data-p="panel" id="panel" hidden>
+    <h2>Şəhər paneli</h2>
+    <p class="sub">Bölgəyə görə əhali, boş ərazi və ev qiymətləri.</p>
+
+    <!-- Giriş etməyənlərə göstərilən pərdə -->
+    <div class="gate">
+      <div class="glass">
+        <h3>Məlumatları görmək üçün daxil ol</h3>
+        <p>Qeydiyyat 30 saniyə çəkir.</p>
+        <button class="btn pri" id="gt">Qeydiyyata keç</button>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Tablar (data-t = tabın adı; JS-dəki render() buna görə seçir) -->
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-t="dash">Dashboard</button>
+        <button role="tab" aria-selected="false" data-t="pop">Əhali</button>
+        <button role="tab" aria-selected="false" data-t="map">Xəritə</button>
+        <button role="tab" aria-selected="false" data-t="land">Boş ərazilər</button>
+        <button role="tab" aria-selected="false" data-t="home">Evlər</button>
+        <button role="tab" aria-selected="false" data-t="cmp">Müqayisə</button>
+        <button role="tab" aria-selected="false" data-t="trend">Qiymət tendensiyası</button>
+        <button role="tab" aria-selected="false" data-t="calc">Kalkulyator</button>
+        <button role="tab" aria-selected="false" data-t="add">Elan yerləşdir</button>
+      </div>
+
+      <!-- Filtr paneli: bölgə, sıralama, görünüş (.hm yalnız “Evlər” tabında görünür), maks. qiymət -->
+      <div class="bar">
+        <select id="dist" aria-label="Bölgə"></select>
+        <select id="sort" aria-label="Sırala"></select>
+        <button class="btn hm" id="vt">Kartlar</button>
+        <label class="mp hm">Maks. qiymət: <b id="mpv"></b><input type="range" id="mp" min="40000" max="400000" step="10000" value="400000"></label>
+      </div>
+
+      <!-- Aktiv tabın məzmunu buraya çəkilir -->
+      <div id="view"></div>
+      <p class="note">Nümunə məlumatlardır. Real rəsmi rəqəmlər əlavə ediləndə panel yenilənəcək.</p>
+    </div>
+  </section>
+<section class="pg" data-p="about" hidden>
+  <h2>SmartXan haqqında</h2>
+  <p class="lead">SmartXan Xankəndidə tikmək, ev almaq və ya investisiya etmək istəyənlərə qərarı rəqəmlərlə verməyə kömək edir.</p>
+  <div class="g3"><div class="glass"><h3>Şəffaf məlumat</h3><p>Bölgə üzrə əhali, boş ərazi və torpaq qiymətləri bir yerdə.</p></div><div class="glass"><h3>Hesablama alətləri</h3><p>İpoteka və tikinti xərci kalkulyatorları ilə büdcəni əvvəlcədən gör.</p></div><div class="glass"><h3>Elan və müqayisə</h3><p>Evləri ★ ilə seç, yan-yana müqayisə et, öz elanını yerləşdir.</p></div></div>
+  <h3 style="font-size:34px">Komanda</h3><div class="g3" id="team"></div>
+</section>
+<section class="pg" data-p="admin" hidden>
+  <h2>İdarəetmə paneli</h2><p class="sub">İstifadəçilər, elanlar və bölgə məlumatları.</p><div id="admv"></div>
+</section>
+</main>
+
+<footer><div class="wrap fg"><div><span class="flogo"><img src="assets/images/logo.png" alt="SmartXan loqosu"></span><b>SmartXan</b><p>Tikintiçilər, ev alıcıları və investorlar üçün Xankəndi məlumat platforması.</p></div><div><b>Səhifələr</b><a href="#/">Ana səhifə</a><a href="#/panel">Panel</a><a href="#/about">Haqqımızda</a></div><div><b>Alətlər</b><a href="#/panel/map">Xəritə</a><a href="#/panel/calc">Kalkulyator</a><a href="#/panel/add">Elan yerləşdir</a></div></div><div class="wrap fb">© 2026 SmartXan. Göstərilən məlumatlar nümunə xarakterlidir.</div></footer>
+
+<!-- ===== PƏNCƏRƏLƏR ===== -->
+<div class="mdl" id="authM" role="dialog" aria-modal="true" aria-label="Hesab"><div class="mw"><button class="x" aria-label="Bağla">×</button><div class="glass card" id="card"></div></div></div>
+<div class="mdl" id="infoM" role="dialog" aria-modal="true" aria-label="Elan təfərrüatı"><div class="mw glass"><button class="x" aria-label="Bağla">×</button><div id="infoB"></div></div></div>
+
+<!-- Qısa bildiriş (toast) -->
+<div class="toast" id="ts" role="status"></div>
+
+<!-- ===== ƏSAS SKRİPT ===== -->
+<script src="js/app.js"></script>
+
+<!-- ===== İKİNCİ SKRİPT: hero-dakı sahə planı ===== -->
+<script src="js/plan.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

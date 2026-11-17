@@ -1173,15 +1173,10 @@ function setLang(l) {
   obs.disconnect();
   tx(document.body);
   obs.observe(document.body, OPT);
-  $("#lgc").textContent = LANG.toUpperCase();
   $$("#lgm button").forEach(b => b.setAttribute("aria-current", b.dataset.l === LANG));
   route()
 }
-const lgb = $("#lgb"), lgm = $("#lgm"), lgClose = () => { lgm.hidden = true; lgb.setAttribute("aria-expanded", "false") };
-lgb.onclick = e => { e.stopPropagation(); lgm.hidden = !lgm.hidden; lgb.setAttribute("aria-expanded", String(!lgm.hidden)) };
-lgm.onclick = e => { const l = e.target.dataset.l; if (l) { setLang(l); lgClose() } };
-document.addEventListener("click", lgClose);
-document.addEventListener("keydown", e => { if (e.key === "Escape") lgClose() });
+$("#lgm").onclick = e => { const b = e.target.closest("button[data-l]"); if (b) setLang(b.dataset.l) };
 
 stats();
 sorts();

@@ -1296,3 +1296,11 @@ nav .wrap{flex-wrap:nowrap;gap:10px}
 .lgm button{white-space:nowrap}
 html.dark .lgm{border-color:#3b5486;box-shadow:5px 5px 0 #0b1730}html.dark .lgm button{color:#e9eef8}
 html.dark .lgm button[aria-current=true]{background:#ffb403;color:#122848}
+
+/* Həmişə görünən dil seçimi: AZ · TR · RU · EN */
+.lgs{display:flex;gap:2px;background:#e3eaf5;border-radius:21px;padding:3px}
+.lgs button{border:0;background:none;padding:8px 10px;border-radius:18px;font:600 13px Outfit,sans-serif;cursor:pointer;color:var(--ink)}
+.lgs button:hover{background:#fff}
+.lgs button[aria-current=true]{background:var(--ink);color:#fff}
+html.dark .lgs{background:#223559}html.dark .lgs button{color:#e9eef8}html.dark .lgs button:hover{background:#2d4575}
+html.dark .lgs button[aria-current=true]{background:#ffb403;color:#122848}
